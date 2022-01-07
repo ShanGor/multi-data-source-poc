@@ -1,0 +1,42 @@
+
+spring:
+  sql:
+    init:
+      mode: never
+      platform: postgresql
+  jpa:
+    database: POSTGRESQL
+    hibernate:
+      # You have to define the ddl-auto as none, otherwise it will override the init data.
+      ddl-auto: none
+    show-sql: true
+
+    properties:
+      hibernate:
+        format_sql: false
+        jdbc:
+          batch_size: 1000
+  # Primary data source, for E1
+  datasource:
+    database-platform: postgresql
+    driver-class-name: org.postgresql.Driver
+    username: test_multi_db
+    password: Abcd1234
+    jdbcUrl: jdbc:postgresql://localhost:5432/multi_db_1?reWriteBatchedInserts=true
+
+
+  # Secondary data source, for E2
+  datasource-e2:
+    database-platform: postgresql
+    driver-class-name: org.postgresql.Driver
+    username: test_multi_db
+    password: Abcd1234
+    jdbcUrl: jdbc:postgresql://localhost:5432/multi_db_2?reWriteBatchedInserts=true
+  # Third data source, for E3
+  datasource-e3:
+    database-platform: postgresql
+    driver-class-name: org.postgresql.Driver
+    username: test_multi_db
+    password: Abcd1234
+    jdbcUrl: jdbc:postgresql://localhost:5432/multi_db_3
+
